@@ -3,19 +3,19 @@ import { HydratedDocument, Schema as MongooseSchema } from 'mongoose';
 
 export type TaskDocument = HydratedDocument<Task>;
 
-@Schema({ timestamps: true, strict: false })
+@Schema({ timestamps: true, strict: true })
 export class Task {
-  @Prop({ required: true })
-  title: string;
+  @Prop({ required: true, trim: true })
+  title!: string;
 
-  @Prop()
-  description: string;
+  @Prop({ trim: true })
+  description?: string;
 
   @Prop({ default: false })
-  completed: boolean;
+  completed!: boolean;
 
-  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' })
-  userId: string;
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User', required: true })
+  userId!: string;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

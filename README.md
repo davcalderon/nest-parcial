@@ -4,6 +4,13 @@ API REST en NestJS y Mongoose para la gestión de **Usuarios (`/users`)** y **Ta
 
 ---
 
+## Cambios parcial
+
+- Caso 1: para el caso 1 se creo el dto del task y se activo el validation pipe para rechazar el error 400 , se dejo el schema del task claro para que se guarde lo permitido.
+- Caso 2: se exporto user services , se quito el acceso directo a user schema y modul para validarlo por el user service
+- Caso 3: se invalido el middleware se le quitaron las rutas que bloqueaban las rutas de task y se creo el authguard para lanzar la excepcion y que pueda responder el 200 ook el el get y con el post sin token el 403 
+-Se sacaron las inyecciones de moongose del controler de task y se dejo que la ruta post de task solo reciba el dto y llame al servicio
+
 ## Requisitos Previos
 
 - **Node.js** 18+ y **npm**
